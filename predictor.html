@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Sleep Predictor</title>
+    <title>Interactive Sleep Predictor — Real-Time Forecast</title>
+    <meta name="description" content="Tweak your daily habits and watch your sleep efficiency forecast update in real-time. Track streaks, earn badges, and get personalized tips.">
+    <meta name="theme-color" content="#00f0ff">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -12,51 +15,56 @@
     <div class="background-decor" id="bg-decor"></div>
     <div class="stars" id="stars"></div>
 
-    <main class="container">
-        <a href="index.html" class="back-link" style="display: inline-block; color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; margin-bottom: 1.5rem; transition: color 0.3s;"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    <main class="container" role="main">
+        <a href="index.html" class="back-link" style="display: inline-block; color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; margin-bottom: 1.5rem; transition: color 0.3s;" aria-label="Back to home page"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
         <header>
-            <h1 class="glow-text"><i class="fa-solid fa-moon"></i> Sleep Quality Predictor</h1>
+            <h1 class="glow-text"><i class="fa-solid fa-moon" aria-hidden="true"></i> Sleep Quality Predictor</h1>
             <p>Tweak your daily habits and watch your sleep efficiency forecast update in <strong>real-time</strong>.</p>
         </header>
 
         <div class="app-grid">
-            <section class="glass-card form-section tilt-effect">
-                <h2><i class="fa-solid fa-sliders"></i> Your Habits</h2>
-                <form id="sleep-form">
+            <section class="glass-card form-section tilt-effect" aria-labelledby="habits-heading">
+                <h2 id="habits-heading"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Your Habits</h2>
+                <form id="sleep-form" novalidate>
                     
                     <div class="input-group">
-                        <label for="caffeine"><i class="fa-solid fa-mug-hot"></i> Caffeine Intake (mg) <span class="val-display" id="caffeine-val">200</span></label>
-                        <input type="range" id="caffeine" min="0" max="1000" step="50" value="200" class="interactive-slider">
+                        <label for="caffeine"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Caffeine Intake (mg) <span class="val-display" id="caffeine-val">200</span></label>
+                        <input type="range" id="caffeine" min="0" max="1000" step="50" value="200" class="interactive-slider"
+                               aria-label="Caffeine intake in milligrams" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="200">
                     </div>
 
                     <div class="input-group">
-                        <label for="screentime"><i class="fa-solid fa-mobile-screen"></i> Screen Time Before Bed (hrs) <span class="val-display" id="screentime-val">2</span></label>
-                        <input type="range" id="screentime" min="0" max="6" step="0.5" value="2" class="interactive-slider">
+                        <label for="screentime"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Screen Time Before Bed (hrs) <span class="val-display" id="screentime-val">2</span></label>
+                        <input type="range" id="screentime" min="0" max="6" step="0.5" value="2" class="interactive-slider"
+                               aria-label="Screen time before bed in hours" aria-valuemin="0" aria-valuemax="6" aria-valuenow="2">
                     </div>
 
                     <div class="input-group">
-                        <label for="exercise"><i class="fa-solid fa-person-running"></i> Exercise (minutes) <span class="val-display" id="exercise-val">30</span></label>
-                        <input type="range" id="exercise" min="0" max="180" step="10" value="30" class="interactive-slider">
+                        <label for="exercise"><i class="fa-solid fa-person-running" aria-hidden="true"></i> Exercise (minutes) <span class="val-display" id="exercise-val">30</span></label>
+                        <input type="range" id="exercise" min="0" max="180" step="10" value="30" class="interactive-slider"
+                               aria-label="Exercise duration in minutes" aria-valuemin="0" aria-valuemax="180" aria-valuenow="30">
                     </div>
 
                     <div class="input-group">
-                        <label for="sleepduration"><i class="fa-solid fa-bed"></i> Previous Night Sleep (hrs) <span class="val-display" id="sleepduration-val">7</span></label>
-                        <input type="range" id="sleepduration" min="2" max="12" step="0.5" value="7" class="interactive-slider">
+                        <label for="sleepduration"><i class="fa-solid fa-bed" aria-hidden="true"></i> Previous Night Sleep (hrs) <span class="val-display" id="sleepduration-val">7</span></label>
+                        <input type="range" id="sleepduration" min="2" max="12" step="0.5" value="7" class="interactive-slider"
+                               aria-label="Previous night sleep duration in hours" aria-valuemin="2" aria-valuemax="12" aria-valuenow="7">
                     </div>
 
                     <div class="input-group">
-                        <label for="stress"><i class="fa-solid fa-brain"></i> Stress Level (1-10) <span class="val-display" id="stress-val">5</span></label>
-                        <input type="range" id="stress" min="1" max="10" step="1" value="5" class="interactive-slider">
+                        <label for="stress"><i class="fa-solid fa-brain" aria-hidden="true"></i> Stress Level (1-10) <span class="val-display" id="stress-val">5</span></label>
+                        <input type="range" id="stress" min="1" max="10" step="1" value="5" class="interactive-slider"
+                               aria-label="Stress level from 1 to 10" aria-valuemin="1" aria-valuemax="10" aria-valuenow="5">
                     </div>
 
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="alcohol"><i class="fa-solid fa-wine-glass"></i> Alcohol (drinks)</label>
-                            <input type="number" id="alcohol" min="0" max="10" value="0" class="interactive-input">
+                            <label for="alcohol"><i class="fa-solid fa-wine-glass" aria-hidden="true"></i> Alcohol (drinks)</label>
+                            <input type="number" id="alcohol" min="0" max="10" value="0" class="interactive-input" aria-label="Number of alcoholic drinks">
                         </div>
                         <div class="input-group">
-                            <label for="consistency"><i class="fa-solid fa-clock"></i> Bedtime Consistency</label>
-                            <select id="consistency" class="interactive-input">
+                            <label for="consistency"><i class="fa-solid fa-clock" aria-hidden="true"></i> Bedtime Consistency</label>
+                            <select id="consistency" class="interactive-input" aria-label="Bedtime consistency level">
                                 <option value="high">Very Consistent</option>
                                 <option value="medium" selected>Somewhat Consistent</option>
                                 <option value="low">Inconsistent</option>
@@ -65,42 +73,51 @@
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn-secondary" id="reset-btn"><i class="fa-solid fa-rotate-right"></i> Reset to Defaults</button>
+                        <button type="button" class="btn-secondary" id="reset-btn" aria-label="Reset all inputs to default values"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Reset to Defaults</button>
                     </div>
                 </form>
             </section>
 
-            <section class="glass-card result-section tilt-effect" id="result-section">
-                <h2><i class="fa-solid fa-chart-pie"></i> Real-time Forecast</h2>
+            <section class="glass-card result-section tilt-effect" id="result-section" aria-labelledby="forecast-heading">
+                <h2 id="forecast-heading"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> Real-time Forecast</h2>
                 
                 <div class="score-container">
-                    <div class="circular-progress pulse-glow" id="score-circle">
+                    <div class="circular-progress pulse-glow" id="score-circle" role="img" aria-label="Sleep quality score gauge">
                         <div class="inner-circle">
-                            <span id="score-text">--</span>
+                            <span id="score-text" role="status" aria-live="polite" aria-label="Sleep quality score">--</span>
                         </div>
                     </div>
                     <div class="feedback">
-                        <span id="emoji-feedback" class="bounce">😴</span>
-                        <h3 id="quality-text">Analyzing...</h3>
-                        <div class="streak-display" id="streak-display">
-                            <i class="fa-solid fa-fire"></i>
+                        <span id="emoji-feedback" class="bounce" aria-hidden="true">😴</span>
+                        <h3 id="quality-text" aria-live="polite">Analyzing...</h3>
+                        <div class="streak-display" id="streak-display" aria-label="Daily streak counter">
+                            <i class="fa-solid fa-fire" aria-hidden="true"></i>
                             <span id="streak-count">0</span> Day Streak
                         </div>
                     </div>
                 </div>
 
                 <div class="insights-panel" id="insights-panel">
-                    <h3><i class="fa-solid fa-lightbulb"></i> Dynamic Insights</h3>
-                    <ul id="tips-list">
+                    <h3><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Dynamic Insights</h3>
+                    <ul id="tips-list" aria-label="Personalized sleep tips" aria-live="polite">
                         <!-- Tips injected via JS -->
                     </ul>
                 </div>
 
-                <div class="badges-panel" id="badges-panel">
-                    <h3><i class="fa-solid fa-trophy"></i> Achievement Badges</h3>
-                    <div class="badges-grid" id="badges-grid">
+                <div class="badges-panel" id="badges-panel" aria-labelledby="badges-heading">
+                    <h3 id="badges-heading"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Achievement Badges</h3>
+                    <div class="badges-grid" id="badges-grid" role="list" aria-label="Achievement badges">
                         <!-- Badges injected via JS -->
                     </div>
+                </div>
+
+                <!-- 7-Day Score History Chart -->
+                <div class="history-panel" id="history-panel" aria-labelledby="history-heading">
+                    <h3 id="history-heading"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> 7-Day Score History</h3>
+                    <div class="history-chart" id="history-chart" role="img" aria-label="7-day sleep score history chart">
+                        <!-- Bars injected via JS -->
+                    </div>
+                    <div class="history-trend" id="history-trend" aria-live="polite"></div>
                 </div>
             </section>
         </div>
@@ -108,34 +125,40 @@
     </main>
 
     <!-- Toast Container -->
-    <div id="toast-container"></div>
+    <div id="toast-container" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
     <!-- Keyboard Shortcut Hints -->
-    <div class="shortcut-hint" id="shortcut-hint">
+    <div class="shortcut-hint" id="shortcut-hint" aria-label="Keyboard shortcuts">
         <span class="shortcut-badge"><kbd>R</kbd> Reset form</span>
         <span class="shortcut-badge"><kbd>T</kbd> Toggle theme</span>
     </div>
 
     <!-- Chatbot Widget -->
-    <button class="chat-toggle-btn" id="chat-toggle-btn">
-        <i class="fa-solid fa-message"></i>
+    <button class="chat-toggle-btn" id="chat-toggle-btn" aria-label="Open SleepBot chat assistant" aria-expanded="false">
+        <i class="fa-solid fa-message" aria-hidden="true"></i>
     </button>
-    <div class="chat-window glass-card" id="chat-window" style="display: none;">
+    <div class="chat-window glass-card" id="chat-window" style="display: none;" role="dialog" aria-labelledby="chat-title" aria-modal="false">
         <div class="chat-header">
-            <h3><i class="fa-solid fa-robot"></i> SleepBot</h3>
-            <button id="close-chat-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="chat-title"><i class="fa-solid fa-robot" aria-hidden="true"></i> SleepBot</h3>
+            <button id="close-chat-btn" aria-label="Close chat"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
-        <div class="chat-messages" id="chat-messages">
+        <div class="chat-messages" id="chat-messages" role="log" aria-label="Chat messages" aria-live="polite">
             <div class="message bot-message">
-                Hello! I'm SleepBot. Ask me for tips on how to improve your sleep, or tell me about your sleep problems!
+                Hello! I'm SleepBot 🤖 Ask me about your score, streaks, badges, or any sleep tips!
             </div>
         </div>
         <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="e.g., How do I reduce stress?" class="interactive-input" />
-            <button id="send-chat-btn" class="btn-primary" style="padding: 0.8rem 1.5rem; font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i></button>
+            <input type="text" id="chat-input" placeholder="e.g., What's my score?" class="interactive-input" aria-label="Type your message to SleepBot" autocomplete="off" />
+            <button id="send-chat-btn" class="btn-primary" style="padding: 0.8rem 1.5rem; font-size: 1rem;" aria-label="Send message"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Register Service Worker for PWA offline support
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
+    </script>
 </body>
 </html>

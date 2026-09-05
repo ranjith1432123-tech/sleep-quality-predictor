@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sleep Quality Predictor - Optimize Your Rest</title>
+    <meta name="description" content="An interactive, real-time sleep quality predictor. Tweak your daily habits and instantly see how they impact your rest — 100% private, runs locally in your browser.">
+    <meta name="theme-color" content="#00f0ff">
+    <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -13,26 +16,32 @@
     <div class="background-decor" id="bg-decor"></div>
     <div class="stars" id="stars"></div>
 
-    <main class="container hero-container">
+    <main class="container hero-container" role="main">
         <header>
-            <h1 class="glow-text hero-title"><i class="fa-solid fa-moon"></i> Sleep Quality Predictor</h1>
+            <h1 class="glow-text hero-title"><i class="fa-solid fa-moon" aria-hidden="true"></i> Sleep Quality Predictor</h1>
             <p class="hero-subtitle">
                 Discover how your daily habits impact your rest. Our interactive, real-time predictor uses heuristic analysis to give you instant feedback and personalized insights on your sleep efficiency.
             </p>
         </header>
 
-        <section class="glass-card tilt-effect cta-card">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; color: #fff;">Ready to optimize your sleep?</h2>
+        <section class="glass-card tilt-effect cta-card" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" style="font-size: 2.2rem; margin-bottom: 1rem; color: #fff;">Ready to optimize your sleep?</h2>
             <p style="margin-bottom: 2.5rem; color: var(--text-secondary); font-size: 1.2rem;">
-                <i class="fa-solid fa-shield-halved" style="color: var(--score-good);"></i> 100% Private. Runs completely locally in your browser.
+                <i class="fa-solid fa-shield-halved" style="color: var(--score-good);" aria-hidden="true"></i> 100% Private. Runs completely locally in your browser.
             </p>
-            <a href="predictor.html" class="btn-primary">
-                Launch Predictor <i class="fa-solid fa-arrow-right-long"></i>
+            <a href="predictor.html" class="btn-primary" aria-label="Launch the interactive sleep predictor">
+                Launch Predictor <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
             </a>
         </section>
     </main>
 
     <!-- Keep script.js for background mouse tracking effects -->
     <script src="script.js"></script>
+    <script>
+        // Register Service Worker for PWA support
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
+    </script>
 </body>
 </html>
