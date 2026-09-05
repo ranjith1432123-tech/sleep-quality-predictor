@@ -82,6 +82,10 @@
                     <div class="feedback">
                         <span id="emoji-feedback" class="bounce">😴</span>
                         <h3 id="quality-text">Analyzing...</h3>
+                        <div class="streak-display" id="streak-display">
+                            <i class="fa-solid fa-fire"></i>
+                            <span id="streak-count">0</span> Day Streak
+                        </div>
                     </div>
                 </div>
 
@@ -91,10 +95,26 @@
                         <!-- Tips injected via JS -->
                     </ul>
                 </div>
+
+                <div class="badges-panel" id="badges-panel">
+                    <h3><i class="fa-solid fa-trophy"></i> Achievement Badges</h3>
+                    <div class="badges-grid" id="badges-grid">
+                        <!-- Badges injected via JS -->
+                    </div>
+                </div>
             </section>
         </div>
         
     </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Keyboard Shortcut Hints -->
+    <div class="shortcut-hint" id="shortcut-hint">
+        <span class="shortcut-badge"><kbd>R</kbd> Reset form</span>
+        <span class="shortcut-badge"><kbd>T</kbd> Toggle theme</span>
+    </div>
 
     <!-- Chatbot Widget -->
     <button class="chat-toggle-btn" id="chat-toggle-btn">
